@@ -26,8 +26,10 @@ def main(argv):
 		
 	for o,a in opts:
 		print(o)
+		#reduce brightness
 		if o in ("-r", "--runter"):
 			plusminuszehn = -0.1
+		#increase brightness
 		elif o in ("-h", "--hoch"):
 			plusminuszehn = 0.1
 		else:
@@ -48,9 +50,10 @@ def main(argv):
 		process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 		output = process.communicate()[0]
 		helligkeitVGA = helligkeit + 0.1
-		bashCommand = " xrandr --output VGA1 --brightness " + str(helligkeitVGA)
-		process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-		output = process.communicate()[0]
+#		for second monitor
+#		bashCommand = " xrandr --output VGA1 --brightness " + str(helligkeitVGA)
+#		process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+#		output = process.communicate()[0]
 		config['speicher']['zahl'] = str(helligkeit)
 		with open(config_file, 'w') as configfile:
 			config.write(configfile)
